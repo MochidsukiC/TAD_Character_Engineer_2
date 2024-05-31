@@ -1,0 +1,4 @@
+name: TAD_Character_Engineer_2
+version: '${project.version}'
+main: jp.houlab.mochidsuki.tad_character_engineer_2.Main
+api-version: '1.20'
