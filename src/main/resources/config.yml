@@ -1,0 +1,2 @@
+#DummyPlayerの生存時間を設定。単位は秒。
+DummyPlayerLivingTime: 20

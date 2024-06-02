@@ -6,7 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 
 import static jp.houlab.mochidsuki.tad_character_engineer_2.Main.plugin;
@@ -19,20 +21,35 @@ public class DummyPlayerCardRunner extends BukkitRunnable {
     Vector spawmVector;
     Player player;
     int times;
+    Location location;
+    float pitch;
+    float yaw;
+
 
     public DummyPlayerCardRunner(Player player){
         this.itemDisplay = player.getWorld().spawn(player.getEyeLocation(), ItemDisplay.class);
+        itemDisplay.setItemStack(new ItemStack(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE));
         this.spawmVector = player.getLocation().getDirection();
         this.player = player;
+        location = player.getLocation().clone();
+        pitch = player.getPitch();
+        yaw = player.getYaw();
+
+
+        Transformation transformation = itemDisplay.getTransformation();
+        transformation.getLeftRotation().rotateLocalX((float) Math.toRadians(pitch-90)).rotateLocalY((float) Math.toRadians(yaw));
+        itemDisplay.setTransformation(transformation);
     }
 
     @Override
     public void run() {
-        itemDisplay.setVelocity(spawmVector.multiply(2));
-        itemDisplay.setRotation(90,times*18);
+        itemDisplay.teleport(location.add(spawmVector));
+        Transformation transformation = itemDisplay.getTransformation();
+        transformation.getLeftRotation().rotateZ((float) Math.toRadians(201));
+        itemDisplay.setTransformation(transformation);
         times++;
 
-        if(itemDisplay.getLocation().getWorld().getBlockAt(itemDisplay.getLocation()).getBlockData().getMaterial() != Material.AIR){
+        if(itemDisplay.getLocation().getWorld().getBlockAt(itemDisplay.getLocation()).getBlockData().getMaterial() != Material.AIR || times > 600){
             new DummyPlayerSystem(itemDisplay,player).runTaskTimer(plugin,0,1);
             cancel();
         }
