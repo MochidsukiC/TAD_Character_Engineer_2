@@ -73,8 +73,9 @@
       </dependency>
       <dependency>
           <groupId>jp.houlab.mochidsuki</groupId>
-          <artifactId>tower_attack_and_difence_core</artifactId>
+          <artifactId>toweraand</artifactId>
           <version>1.0-SNAPSHOT</version>
+          <scope>provided</scope>
       </dependency>
   </dependencies>
 </project>
