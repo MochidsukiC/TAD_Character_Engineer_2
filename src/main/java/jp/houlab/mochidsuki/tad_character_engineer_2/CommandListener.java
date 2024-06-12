@@ -18,6 +18,15 @@ public class CommandListener implements CommandExecutor {
             if(strings[0].equalsIgnoreCase("abi")){
                 new DummyPlayerCardRunner((Player) commandSender).runTaskTimer(plugin,0,1);
             }
+            if(strings[0].equalsIgnoreCase("ult")){
+                Ultimate.startUlt((Player) commandSender);
+            }
+            if(strings[0].equalsIgnoreCase("tnt")){
+                return Ultimate.spawnExplosion((Player) commandSender);
+            }
+            if(strings[0].equalsIgnoreCase("tp")){
+                return Ultimate.teleportPlayer((Player) commandSender);
+            }
         }
 
         return false;

@@ -29,16 +29,18 @@ public class DummyPlayerCardRunner extends BukkitRunnable {
     public DummyPlayerCardRunner(Player player){
         this.itemDisplay = player.getWorld().spawn(player.getEyeLocation(), ItemDisplay.class);
         itemDisplay.setItemStack(new ItemStack(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE));
-        this.spawmVector = player.getLocation().getDirection();
+        this.spawmVector = player.getEyeLocation().getDirection();
         this.player = player;
-        location = player.getLocation().clone();
+        location = player.getEyeLocation().clone();
         pitch = player.getPitch();
         yaw = player.getYaw();
-
 
         Transformation transformation = itemDisplay.getTransformation();
         transformation.getLeftRotation().rotateLocalX((float) Math.toRadians(pitch-90)).rotateLocalY((float) Math.toRadians(yaw));
         itemDisplay.setTransformation(transformation);
+
+
+        V.cardList.put(player,itemDisplay);
     }
 
     @Override
@@ -79,6 +81,7 @@ class DummyPlayerSystem extends BukkitRunnable{
         times++;
         if(times > Main.config.getInt("DummyPlayerLivingTime")*20){
             itemDisplay.remove();
+            V.cardList.remove(player);
             cancel();
 
         }
