@@ -41,10 +41,10 @@ public class Ultimate {
             Location location = itemDisplay.getLocation();
             boolean isExploded = location.getWorld().createExplosion(itemDisplay,location.clone().add(0,1,0),4f,false,false);
             location.getWorld().spawnParticle(Particle.EXPLOSION_HUGE,location.clone().add(0,1,0),3);
-            location.getWorld().spawnParticle(Particle.FIREWORKS_SPARK,location.clone().add(0,1,0),30,0,0,0,10);
-            location.getWorld().spawnParticle(Particle.FLAME,location.clone().add(0,1,0),30,0,0,0,10);
+            location.getWorld().spawnParticle(Particle.FIREWORKS_SPARK,location.clone().add(0,1,0),500,0,0,0,1);
+            location.getWorld().spawnParticle(Particle.FLAME,location.clone().add(0,1,0),500,0,0,0,1);
             location.getWorld().spawnParticle(Particle.FLASH,location.clone().add(0,1,0),5);
-            location.getWorld().spawnParticle(Particle.LAVA,location.clone().add(0,1,0),30,0,0,0,10);
+            location.getWorld().spawnParticle(Particle.LAVA,location.clone().add(0,1,0),500,1,1,1,1);
             //location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION,location.clone().add(0,1,0),30,0,0,0,2);
             V.cardList.remove(player);
             itemDisplay.remove();
@@ -58,12 +58,12 @@ public class Ultimate {
             //behindSpawnParticle
             {
                 Location location = player.getLocation().clone();
-                for(int y = 0;y < 20;y++){
+                for(double y = 0;y < 30;y++){
                     for (int i = 0;i<360;i++){
                         if(y % 4 == 0) {
-                            location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(1, y / 10, 0).rotateAroundY(Math.toRadians(i))), 5, new Particle.DustTransition(Color.BLUE, Color.BLUE, 1));
+                            location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(0.6, y / 10, 0).rotateAroundY(Math.toRadians(i))), 1, new Particle.DustTransition(Color.AQUA, Color.BLUE, 1));
                         }else {
-                            location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(1, y / 10, 0).rotateAroundY(Math.toRadians(i))), 5, new Particle.DustTransition(Color.WHITE, Color.WHITE, 1));
+                            location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(0.6, y / 10, 0).rotateAroundY(Math.toRadians(i))), 1, new Particle.DustTransition(Color.WHITE, Color.WHITE, 1));
                         }
                     }
                 }
@@ -76,12 +76,12 @@ public class Ultimate {
             player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,40,3));
 
             //afterSpawnParticle
-            for(int y = 0;y < 20;y++){
+            for(double y = 0;y < 30;y++){
                 for (int i = 0;i<360;i++){
                     if(y % 4 == 0) {
-                        location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(1, y / 10, 0).rotateAroundY(Math.toRadians(i))), 5, new Particle.DustTransition(Color.BLUE, Color.BLUE, 1));
+                        location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(0.6, y / 10 +2, 0).rotateAroundY(Math.toRadians(i))), 1, new Particle.DustTransition(Color.AQUA, Color.BLUE, 1));
                     }else {
-                        location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(1, y / 10, 0).rotateAroundY(Math.toRadians(i))), 5, new Particle.DustTransition(Color.WHITE, Color.WHITE, 1));
+                        location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION, location.clone().add(new Vector(0.6, y / 10 +2, 0).rotateAroundY(Math.toRadians(i))), 1, new Particle.DustTransition(Color.WHITE, Color.WHITE, 1));
                     }
                 }
             }
