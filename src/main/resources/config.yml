@@ -1,2 +1,5 @@
 #DummyPlayerの生存時間を設定。単位は秒。
 DummyPlayerLivingTime: 20
+
+#爆発までの猶予時間。単位はティック。
+ExplosionPrepareTime: 40

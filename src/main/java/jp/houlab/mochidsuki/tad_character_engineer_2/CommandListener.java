@@ -22,7 +22,8 @@ public class CommandListener implements CommandExecutor {
                 Ultimate.startUlt((Player) commandSender);
             }
             if(strings[0].equalsIgnoreCase("tnt")){
-                return Ultimate.spawnExplosion((Player) commandSender);
+                Ultimate.spawnExplosion((Player) commandSender);
+                return true;
             }
             if(strings[0].equalsIgnoreCase("tp")){
                 return Ultimate.teleportPlayer((Player) commandSender);
