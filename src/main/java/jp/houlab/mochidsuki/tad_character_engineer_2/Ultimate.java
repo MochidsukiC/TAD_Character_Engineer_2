@@ -81,6 +81,7 @@ public class Ultimate {
             //behindSpawnParticle
             {
                 Location location = player.getLocation().clone();
+                location.getWorld().playSound(location, Sound.ENTITY_ENDERMAN_TELEPORT,0.5f,1);
                 for(double y = 0;y < 30;y++){
                     for (int i = 0;i<360;i++){
                         if(y % 4 == 0) {
@@ -99,6 +100,8 @@ public class Ultimate {
             player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,40,3));
 
             //afterSpawnParticle
+
+            location.getWorld().playSound(location.clone().add(0,2,0), Sound.ENTITY_ENDERMAN_TELEPORT,0.5f,1);
             for(double y = 0;y < 30;y++){
                 for (int i = 0;i<360;i++){
                     if(y % 4 == 0) {
