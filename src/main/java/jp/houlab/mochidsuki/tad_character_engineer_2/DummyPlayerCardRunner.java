@@ -8,10 +8,12 @@ import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 
 import static jp.houlab.mochidsuki.tad_character_engineer_2.Main.plugin;
+import static jp.houlab.mochidsuki.tad_character_engineer_2.V.cardSystem;
 import static jp.houlab.mochidsuki.toweraandd.TowerAandD.config;
 import static jp.houlab.mochidsuki.toweraandd.V.*;
 
@@ -52,7 +54,8 @@ public class DummyPlayerCardRunner extends BukkitRunnable {
         times++;
 
         if(itemDisplay.getLocation().getWorld().getBlockAt(itemDisplay.getLocation()).getBlockData().getMaterial() != Material.AIR || times > 600){
-            new DummyPlayerSystem(itemDisplay,player).runTaskTimer(plugin,0,1);
+            BukkitTask bukkitTask = new DummyPlayerSystem(itemDisplay,player).runTaskTimer(plugin,0,1);
+            cardSystem.put(itemDisplay,bukkitTask);
             cancel();
         }
     }

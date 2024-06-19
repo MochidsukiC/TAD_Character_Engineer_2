@@ -15,6 +15,7 @@ import org.bukkit.util.Vector;
 import java.util.HashMap;
 
 import static jp.houlab.mochidsuki.tad_character_engineer_2.Main.config;
+import static jp.houlab.mochidsuki.tad_character_engineer_2.V.cardSystem;
 
 public class Ultimate {
     static public boolean startUlt(Player player){
@@ -63,6 +64,7 @@ public class Ultimate {
                         //location.getWorld().spawnParticle(Particle.DUST_COLOR_TRANSITION,location.clone().add(0,1,0),30,0,0,0,2);
                         V.cardList.remove(player);
                         itemDisplay.remove();
+                        cardSystem.get(itemDisplay).cancel();
                         cancel();
                     }
 
@@ -111,6 +113,10 @@ public class Ultimate {
                     }
                 }
             }
+
+            V.cardList.remove(player);
+            itemDisplay.remove();
+            cardSystem.get(itemDisplay).cancel();
             return true;
         }else {
             return false;
