@@ -27,10 +27,14 @@ public class Listener implements org.bukkit.event.Listener {
                 }
                 case TNT:{
                     Ultimate.spawnExplosion(event.getPlayer());
+                    event.getPlayer().getInventory().remove(Material.TNT);
+                    event.getPlayer().getInventory().remove(Material.RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
                     break;
                 }
-                case ENDER_EYE:{
+                case RIB_ARMOR_TRIM_SMITHING_TEMPLATE:{
                     Ultimate.teleportPlayer(event.getPlayer());
+                    event.getPlayer().getInventory().remove(Material.TNT);
+                    event.getPlayer().getInventory().remove(Material.RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
                     break;
                 }
 

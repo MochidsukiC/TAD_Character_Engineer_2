@@ -21,7 +21,7 @@ public class Ultimate {
     static public boolean startUlt(Player player){
         if(V.cardList.containsKey(player)){
             ItemStack tnt = new ItemStack(Material.TNT);
-            ItemStack ender_eye = new ItemStack(Material.ENDER_EYE);
+            ItemStack ender_eye = new ItemStack(Material.RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
             ItemMeta tntItemMeta = tnt.getItemMeta();
             ItemMeta ender_eyeItemMeta = ender_eye.getItemMeta();
             tntItemMeta.addEnchant(Enchantment.LUCK,1,true);
@@ -74,8 +74,6 @@ public class Ultimate {
 
 
 
-        }else {
-            return;
         }
     }
     static public boolean teleportPlayer(Player player){
